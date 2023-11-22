@@ -1,32 +1,37 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useForm from '../../Hooks/useForm'
+import Input from '../Forms/Input'
+import Button from '../Forms/Button'
 
 const LoginForm = () => {
-	const [username, setUsername] = useState('')
-	const [password, setPassword] = useState('')
+	const username = useForm('email')
+	const password = useForm()
 
 	function handleSubmit(event) {
 		event.preventDefault()
-		fetch('http://dogs.test/json/jwt-auth/v1/token', {
-			method: "POST",
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({username, password})
-		}).then(response => {
-			console.log(response)
-			return response.json()
-		}).then(json => 
-			console.log(json))
+		if(username.validate() && password.validate()) {
+			fetch('http://dogs.test/json/jwt-auth/v1/token', {
+				method: "POST",
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify()
+			}).then(response => {
+				console.log(response)
+				return response.json()
+			}).then(json =>
+				console.log(json))
+		}
 	}
 
 	return (
 		<section>
 			<h1>Login</h1>
 			<form onSubmit={handleSubmit}>
-				<input type="text" value={username} onChange={({ target }) => setUsername(target.value)}/>
-				<input type="text" value={password} onChange={({ target }) => setPassword(target.value)}/>
-				<button>Enviar</button>
+				<Input label="Usuário" type="text" name="username" {...username} />
+				<Input label="Senha" type="password" name="password" {...password} />
+				<Button>Enviar</Button>
 			</form>
 
 			<Link to="/login/create">Cadastrar</Link>
