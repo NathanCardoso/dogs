@@ -5,7 +5,7 @@ import Dogs from './ComponentsSvg/Dogs'
 import { UserContext } from '../UserContext'
 
 const Header = () => {
-	const { data, userLogout } = useContext(UserContext)
+	const { data } = useContext(UserContext)
 
 	return (
 		<header className={style.header}>
@@ -14,10 +14,7 @@ const Header = () => {
 					<Dogs />
 				</Link>
 				{data ? 
-					<div> 
-						<p className={style.login}>{data.name}</p> 
-						<button onClick={userLogout}>sair</button>
-					</div>: 
+					<p className={style.login}>{data.name}</p> :
 					<Link to="/login" className={style.login}>Login | Criar Login</Link>
 				}
 			</nav>
