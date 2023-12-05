@@ -7,6 +7,7 @@ import Login from './components/Login/Login'
 import Account from './components/Account/Account'
 import Photo from './components/Photo/Photo'
 import UserProfile from './components/Account/UserProfile'
+import NotFound from './components/NotFound'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UserStorage } from './UserContext'
 import ProtectedRoute from './components/Helper/ProtectedRoute'
@@ -27,6 +28,7 @@ const App = () => {
 					/>
 					<Route path="photo/:id" element={<Photo />} />
 					<Route path="profile/:user" element={<UserProfile />} />
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 				<Footer />
 			</UserStorage>
