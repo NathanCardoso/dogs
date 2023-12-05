@@ -14,25 +14,29 @@ import ProtectedRoute from './components/Helper/ProtectedRoute'
 
 const App = () => {
 	return (
-		<BrowserRouter>
-			<UserStorage>
-				<Header />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="login/*" element={<Login />} />
-					<Route path="account/*" 
-						element={
-						<ProtectedRoute>
-							<Account />
-						</ProtectedRoute>} 
-					/>
-					<Route path="photo/:id" element={<Photo />} />
-					<Route path="profile/:user" element={<UserProfile />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-				<Footer />
-			</UserStorage>
-		</BrowserRouter>
+		<div className="app">
+			<BrowserRouter>
+				<UserStorage>
+					<Header />
+					<main className='appBody'>
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="login/*" element={<Login />} />
+							<Route path="account/*"
+								element={
+									<ProtectedRoute>
+										<Account />
+									</ProtectedRoute>}
+							/>
+							<Route path="photo/:id" element={<Photo />} />
+							<Route path="profile/:user" element={<UserProfile />} />
+							<Route path="*" element={<NotFound />} />
+						</Routes>
+					</main>
+					<Footer />
+				</UserStorage>
+			</BrowserRouter>
+		</div>
 	)
 }
 
