@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Home from './components/Home'
 import Login from './components/Login/Login'
 import Account from './components/Account/Account'
+import Photo from './components/Photo/Photo'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UserStorage } from './UserContext'
 import ProtectedRoute from './components/Helper/ProtectedRoute'
@@ -23,6 +24,7 @@ const App = () => {
 							<Account />
 						</ProtectedRoute>} 
 					/>
+					<Route path="photo/:id" element={<Photo />} />
 				</Routes>
 				<Footer />
 			</UserStorage>

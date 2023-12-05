@@ -83,6 +83,12 @@ export function GET_PHOTOS({ page, total, user }) {
 	}
 }
 
+export function GET_PHOTO_ID(id) {
+	return {
+		url: `${API_URL}/api/photo/${id}`
+	}
+}
+
 export function POST_COMMENT(id, body, token) {
 	return {
 		url: `${API_URL}/api/comment/${id}`,
